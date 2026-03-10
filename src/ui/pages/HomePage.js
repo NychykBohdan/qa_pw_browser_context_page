@@ -53,31 +53,21 @@ export class HomePage {
 
   async clickOnArticle(articleTitle) {
     await test.step(`Click on article ${articleTitle}`, async () => {
-      await this.page.getByRole(
-        'link', 
-        { name: 
-          `Article title: ${articleTitle}`
-        }).click();
+      await this.page.getByRole('heading', { name: articleTitle }).click();
     })
   }
 
   async assertArticleIsVisible(articleTitle) {
     await test.step(`Assert article ${articleTitle} is visible`, async () => {
-      await expect(this.page.getByRole(
-        'link', 
-        { name: 
-          `Article title: ${articleTitle}`
-        })).toBeVisible();
+      await expect(this.page.getByRole('heading', 
+        { name: articleTitle })).toBeVisible();
     })
   }
 
   async assertArticleIsHidden(articleTitle) {
     await test.step(`Assert article ${articleTitle} is hidden`, async () => {
-      await expect(this.page.getByRole(
-        'link', 
-        { name: 
-          `Article title: ${articleTitle}`
-        })).toBeHidden();
+      await expect(this.page.getByRole('heading', 
+        { name: articleTitle })).toBeHidden();
     })
   }
 }

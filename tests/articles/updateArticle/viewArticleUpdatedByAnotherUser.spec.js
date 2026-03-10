@@ -12,9 +12,9 @@ test.beforeEach(async ({ page1, page2, user1, user2, articleWithoutTags }) => {
 });
 
 test('View article updated by another user', async ({
+  user1,
   page1,
   page2,
-  user2,
   articleWithoutTags,
 }) => {
   const editArticlePage = new EditArticlePage(page1);
@@ -27,7 +27,7 @@ test('View article updated by another user', async ({
     articleWithoutTags.title
   );
   await viewArticlePageUser.assertArticleTextIsVisible(articleWithoutTags.text);
-  await viewArticlePageUser.assertArticleAuthorNameIsVisible(user2.username);
+  await viewArticlePageUser.assertArticleAuthorNameIsVisible(user1.username);
 
   await viewArticlePageAuthor.clickEditArticleButton();
   const newArticleTitle = 'new article title';
