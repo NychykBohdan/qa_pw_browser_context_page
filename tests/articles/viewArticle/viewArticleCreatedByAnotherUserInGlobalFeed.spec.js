@@ -13,7 +13,7 @@ test.beforeEach(async ({ page1, page2, user1, user2, articleWithoutTags }) => {
 
 test('View an article created by another user in Global Feed', async ({
   page2,
-  user2,
+  user1,
   articleWithoutTags,
 }) => {
   const homePage = new HomePage(page2);
@@ -25,5 +25,5 @@ test('View an article created by another user in Global Feed', async ({
 
   await viewArticlePage.assertArticleTitleIsVisible(articleWithoutTags.title);
   await viewArticlePage.assertArticleTextIsVisible(articleWithoutTags.text);
-  await viewArticlePage.assertArticleAuthorNameIsVisible(user2.username);
+  await viewArticlePage.assertArticleAuthorNameIsVisible(user1.username);
 });

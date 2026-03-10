@@ -15,7 +15,7 @@ export class UserProfile {
 
   async openProfileSettingsPage() {
     await test.step(`Open profile settings page`, async() => {
-      await this.settingsLink.click({waitUntil: 'domcontentloaded'});
+      await this.settingsLink.click();
     })
   }
 

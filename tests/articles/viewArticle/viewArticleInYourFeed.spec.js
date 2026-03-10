@@ -14,7 +14,6 @@ test.beforeEach(async ({ page1, page2, user1, user2, articleWithoutTags }) => {
 test('View an article created by another user in Your Feed', async ({
   user1,
   page2,
-  user2,
   articleWithoutTags,
 }) => {
   const viewArticlePage = new ViewArticlePage(page2);
@@ -24,7 +23,7 @@ test('View an article created by another user in Your Feed', async ({
 
   await viewArticlePage.assertArticleTitleIsVisible(articleWithoutTags.title);
   await viewArticlePage.assertArticleTextIsVisible(articleWithoutTags.text);
-  await viewArticlePage.assertArticleAuthorNameIsVisible(user2.username);
+  await viewArticlePage.assertArticleAuthorNameIsVisible(user1.username);
 
   await viewArticlePage.followArticleAuthor(user1.username);
   await viewArticlePage.assertUserFollowingArticleAuthor(user1.username);
@@ -38,7 +37,6 @@ test('View an article created by another user in Your Feed', async ({
 test('User should not see articles from unfollowed user in Your Feed', async ({
   user1,
   page2,
-  user2,
   articleWithoutTags,
 }) => {
   const viewArticlePage = new ViewArticlePage(page2);
@@ -48,7 +46,7 @@ test('User should not see articles from unfollowed user in Your Feed', async ({
 
   await viewArticlePage.assertArticleTitleIsVisible(articleWithoutTags.title);
   await viewArticlePage.assertArticleTextIsVisible(articleWithoutTags.text);
-  await viewArticlePage.assertArticleAuthorNameIsVisible(user2.username);
+  await viewArticlePage.assertArticleAuthorNameIsVisible(user1.username);
 
   await viewArticlePage.followArticleAuthor(user1.username);
   await viewArticlePage.assertUserFollowingArticleAuthor(user1.username);
